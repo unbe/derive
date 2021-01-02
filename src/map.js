@@ -7,7 +7,7 @@ import * as ui from './ui';
 
 
 // Züri isch the center of the universe
-const INIT_COORDS = [47.372, 8.542];
+const INIT_COORDS = [47.37, 8.54];
 
 
 const DEFAULT_OPTIONS = {
