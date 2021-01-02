@@ -197,7 +197,7 @@ function buildUploadModal(numFiles) {
 }
 
 
-export function buildSettingsModal(tracks, opts, finishCallback) {
+export function buildSettingsModal(tracks, opts, updateCallback) {
     let overrideExisting = opts.lineOptions.overrideExisting ? 'checked' : '';
 
     if (tracks.length > 0) {
@@ -300,7 +300,7 @@ export function buildSettingsModal(tracks, opts, finishCallback) {
         },
     });
 
-    modal.afterClose((modal) => {
+    let applyOptions = () => {
         let elements = document.getElementById('settings').elements;
         let options = Object.assign({}, opts);
 
@@ -321,9 +321,22 @@ export function buildSettingsModal(tracks, opts, finishCallback) {
             options.lineOptions[opt] = elements[opt].checked;
         }
 
-        finishCallback(options);
-        modal.destroy();
+        updateCallback(options);
+    };
+
+    modal.afterClose((modal) => {
+      applyOptions();
+      modal.destroy();
     });
+
+    modal.afterCreate(() => {
+      let elements = document.getElementById('settings').elements;
+      for (let opt of ['theme', 'color', 'weight', 'opacity', 'markerColor',
+                       'markerWeight', 'markerOpacity', 'markerRadius']) {
+        elements[opt].addEventListener('change', applyOptions);
+      }
+    });
+
 
     return modal;
 }
