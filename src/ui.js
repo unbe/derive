@@ -42,7 +42,8 @@ the attractions of the terrain and the encounters they find there.<cite><a
 href="http://library.nothingness.org/articles/SI/en/display/314">[1]</a></cite>
 </blockquote>
 
-<p>Code is available <a href="https://github.com/erik/derive">on GitHub</a>.</p>
+<p>Code is available <a href="https://github.com/unbe/derive">on GitHub</a>,
+ forked from <a href="https://github.com/erik/derive">erik@github</a>.</p>
 `,
 
     exportImage: `
